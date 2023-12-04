@@ -14,7 +14,7 @@
 
     <div class="bpmn-toolbar-right">
       <bpmn-save />
-      <bpmn-arrange />
+      <!-- <bpmn-arrange /> -->
     </div>
   </div>
 </template>
@@ -28,11 +28,11 @@ import BpmnScales from "./tools/Scales";
 import BpmnCommands from "./tools/Commands";
 import BpmnExternals from "./tools/Externals";
 import BpmnSave from "./tools/Save.vue";
-import BpmnArrange from "./tools/Arrange";
+// import BpmnArrange from "./tools/Arrange";
 export default {
   name: "BpmnToolbar",
   // BpmnAligns,
-  components: { BpmnExternals, BpmnCommands, BpmnScales, BpmnPreviews, BpmnExports, BpmnImport, BpmnSave, BpmnArrange }
+  components: { BpmnExternals, BpmnCommands, BpmnScales, BpmnPreviews, BpmnExports, BpmnImport, BpmnSave }
 };
 </script>
 
