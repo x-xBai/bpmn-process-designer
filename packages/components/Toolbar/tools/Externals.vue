@@ -1,6 +1,6 @@
 <template>
   <el-button-group>
-    <el-button
+    <!-- <el-button
       v-if="getEditorConfig.useMock"
       v-r-popover:processMock
       class="el-button__no-padding"
@@ -14,7 +14,7 @@
         trigger="hover"
         popper-class="button-popover"
       />
-    </el-button>
+    </el-button> -->
     <el-button
       v-if="getEditorConfig.useMinimap"
       v-r-popover:minimapToggle
@@ -30,7 +30,7 @@
         popper-class="button-popover"
       />
     </el-button>
-    <el-button v-if="getEditorConfig.useLint" v-r-popover:lintToggle class="el-button__no-padding" @click="lintToggle">
+    <!-- <el-button v-if="getEditorConfig.useLint" v-r-popover:lintToggle class="el-button__no-padding" @click="lintToggle">
       <lucide-icon name="FileCheck" :size="16" />
       <el-popover
         ref="lintToggle"
@@ -39,8 +39,8 @@
         trigger="hover"
         popper-class="button-popover"
       />
-    </el-button>
-    <el-button v-r-popover:eventToggle class="el-button__no-padding" @click="eventModelVisible = true">
+    </el-button> -->
+    <!-- <el-button v-r-popover:eventToggle class="el-button__no-padding" @click="eventModelVisible = true">
       <lucide-icon name="Podcast" :size="16" />
       <el-popover
         ref="eventToggle"
@@ -49,8 +49,8 @@
         trigger="hover"
         popper-class="button-popover"
       />
-    </el-button>
-    <el-button v-r-popover:keyboard class="el-button__no-padding" @click="keyboardModelVisible = true">
+    </el-button> -->
+    <!-- <el-button v-r-popover:keyboard class="el-button__no-padding" @click="keyboardModelVisible = true">
       <lucide-icon name="Keyboard" :size="16" />
       <el-popover
         ref="keyboard"
@@ -59,9 +59,9 @@
         trigger="hover"
         popper-class="button-popover"
       />
-    </el-button>
+    </el-button> -->
 
-    <el-dialog
+    <!-- <el-dialog
       :visible.sync="eventModelVisible"
       title="Bpmn.js 当前已注册事件"
       width="560px"
@@ -111,7 +111,7 @@
         <p>Create anything</p>
         <p>N</p>
       </div>
-    </el-dialog>
+    </el-dialog> -->
   </el-button-group>
 </template>
 

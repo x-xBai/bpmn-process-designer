@@ -14,6 +14,12 @@
       <el-input v-model="elementName" maxlength="20" @change="updateElementName" />
     </edit-item>
 
+    <template v-if="isUserTask">
+      <edit-item label="assignee">
+        <el-input v-model="elementAssignee" maxlength="20" @change="updateElementAssignee" />
+      </edit-item>
+    </template>
+
     <template v-if="isProcess">
       <edit-item key="version" label="Version">
         <el-input v-model="elementVersion" maxlength="20" @change="updateElementVersion" />
@@ -28,7 +34,7 @@
 
 <script>
 import { catchError } from "@utils/printCatch";
-import { getNameValue, setNameValue } from "@packages/bo-utils/nameUtil";
+import { getNameValue, setNameValue, getAssigneeValue, setAssigneeValue } from "@packages/bo-utils/nameUtil";
 import {
   getProcessExecutable,
   getProcessVersionTag,
@@ -47,7 +53,9 @@ export default {
       elementName: "",
       elementVersion: "",
       elementExecutable: true,
-      isProcess: false
+      isProcess: false,
+      isUserTask: false,
+      elementAssignee: ""
     };
   },
 
@@ -58,6 +66,11 @@ export default {
   methods: {
     reloadGenerationData() {
       this.isProcess = !!getActive() && getActive().type === "bpmn:Process";
+      // 判断是否是 用户任务
+      this.isUserTask = !!getActive() && getActive().type === "bpmn:UserTask";
+      // 获取 assignee
+      this.elementAssignee = getAssigneeValue(getActive()) || "";
+      console.log("getActive()===", getActive());
       this.elementId = getActive().id;
       this.elementName = getNameValue(getActive()) || "";
       if (this.isProcess) {
@@ -67,6 +80,10 @@ export default {
     },
     updateElementName(value) {
       setNameValue(getActive(), value);
+    },
+    // 更新 assignee
+    updateElementAssignee(value) {
+      setAssigneeValue(getActive(), value);
     },
     updateElementId(value) {
       setIdValue(getActive(), value);

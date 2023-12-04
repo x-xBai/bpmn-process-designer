@@ -116,14 +116,29 @@ export default {
       this.renderComponents.splice(0, this.renderComponents.length); // 清空
       // 重设
       this.renderComponents.push(ElementGenerations);
-      this.renderComponents.push(ElementDocumentations);
+      // 附加文档
+      // this.renderComponents.push(ElementDocumentations);
+
+      // 条件
       isCanbeConditional(element) && this.renderComponents.push(ElementConditional);
-      isJobExecutable(element) && this.renderComponents.push(ElementJobExecution);
-      this.renderComponents.push(ElementExtensionProperties);
-      isExecutable(element) && this.renderComponents.push(ElementExecutionListeners);
-      isAsynchronous(element) && this.renderComponents.push(ElementAsyncContinuations);
-      isStartInitializable(element) && this.renderComponents.push(ElementStartInitiator);
-      this.renderComponents.push(ElementExtensionField);
+
+      // 执行作业
+      // isJobExecutable(element) && this.renderComponents.push(ElementJobExecution);
+
+      // 扩展属性
+      // this.renderComponents.push(ElementExtensionProperties);
+
+      // 执行监听
+      // isExecutable(element) && this.renderComponents.push(ElementExecutionListeners);
+
+      // 异步属性
+      // isAsynchronous(element) && this.renderComponents.push(ElementAsyncContinuations);
+
+      // 启动器
+      // isStartInitializable(element) && this.renderComponents.push(ElementStartInitiator);
+
+      // 扩展字段
+      // this.renderComponents.push(ElementExtensionField);
     }
   }
 };

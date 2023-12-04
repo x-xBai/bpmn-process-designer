@@ -46,27 +46,27 @@ export default function (designerDom, moduleAndExtensions, context) {
   EnhancementContextmenu(modeler, context.getEditor);
 
   // 功能测试部分，可删除
-  modeler.on("commandStack.elements.create.preExecute", (event) => {
-    console.log("create", event);
-    const {
-      context: { elements }
-    } = event;
-    if (elements[0] && elements[0].type === "bpmn:UserTask") {
-      addExtensionProperty(elements[0], { name: "111", value: "1231" });
-    }
-    return event;
-  });
-  modeler.on("commandStack.shape.replace.preExecute", (event) => {
-    console.log("replace", event);
-    debugger;
-    const {
-      context: { newShape, newData }
-    } = event;
-    if (newData && newData.type === "bpmn:UserTask") {
-      addExtensionProperty(newData.businessObject, { name: "111", value: "1231" });
-    }
-    return event;
-  });
+  // modeler.on("commandStack.elements.create.preExecute", (event) => {
+  //   console.log("create", event);
+  //   const {
+  //     context: { elements }
+  //   } = event;
+  //   if (elements[0] && elements[0].type === "bpmn:UserTask") {
+  //     addExtensionProperty(elements[0], { name: "111", value: "1231" });
+  //   }
+  //   return event;
+  // });
+  // modeler.on("commandStack.shape.replace.preExecute", (event) => {
+  //   console.log("replace", event);
+  //   debugger;
+  //   const {
+  //     context: { newShape, newData }
+  //   } = event;
+  //   if (newData && newData.type === "bpmn:UserTask") {
+  //     addExtensionProperty(newData.businessObject, { name: "111", value: "1231" });
+  //   }
+  //   return event;
+  // });
 
   console.log(modeler);
 

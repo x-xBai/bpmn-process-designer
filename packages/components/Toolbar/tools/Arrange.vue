@@ -1,6 +1,6 @@
 <template>
   <el-button v-popover:popover type="primary">
-    预览文件
+    部署文件
     <el-popover ref="popover" placement="bottom" popper-class="button-popover" trigger="hover">
       <div class="button-list_column">
         <el-button type="primary" @click="openXMLPreviewModel">预览 XML</el-button>
@@ -21,7 +21,7 @@ import { mapGetters } from "vuex";
 import { catchError } from "@utils/printCatch";
 
 export default {
-  name: "BpmnPreviews",
+  name: "BpmnArrange",
   computed: {
     ...mapGetters(["getModeler"]),
     modelTitle() {

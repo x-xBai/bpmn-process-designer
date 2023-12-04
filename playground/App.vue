@@ -7,21 +7,22 @@
       <div v-else class="camunda-panel" id="camunda-panel"></div>
     </div>
 
-    <bpmn-settings />
+    <!-- <bpmn-settings /> -->
     <bpmn-context-menu />
   </div>
 </template>
 
 <script>
 import BpmnDesigner from "../packages/components/Designer";
-import BpmnSettings from "../packages/components/Settings";
+// import BpmnSettings from "../packages/components/Settings";
 import { mapGetters } from "vuex";
 import BpmnToolbar from "../packages/components/Toolbar";
 import BpmnContextMenu from "@packages/components/ContextMenu/ContextMenu";
 import BpmnPanel from "@packages/components/Panel";
 export default {
   name: "App",
-  components: { BpmnPanel, BpmnContextMenu, BpmnToolbar, BpmnSettings, BpmnDesigner },
+  //  BpmnSettings,
+  components: { BpmnPanel, BpmnContextMenu, BpmnToolbar, BpmnDesigner },
   data() {
     return {
       xmlString: undefined

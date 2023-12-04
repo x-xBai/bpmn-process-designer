@@ -22,6 +22,7 @@ export function getNameValue(element) {
 // 根据输入内容设置 name 属性
 export function setNameValue(element, value) {
   const modeling = getModeler.getModeling();
+
   const canvas = getModeler.getCanvas();
   const bpmnFactory = getModeler.getModeler?.get("bpmnFactory");
 
@@ -40,6 +41,26 @@ export function setNameValue(element, value) {
     return modeling?.updateLabel(element, value);
   }
   modeling?.updateProperties(element, { name: value });
+}
+// 根据元素获取 assignee 属性
+export function getAssigneeValue(element) {
+  // console.log('getAssigneeValue===', element)
+  if (is(element, "bpmn:UserTask")) {
+    return element?.businessObject?.assignee;
+  }
+  return undefined;
+}
+
+// 根据输入内容设置 assignee 属性
+export function setAssigneeValue(element, value) {
+  const modeling = getModeler.getModeling();
+
+  // console.log('根据输入内容设置=assignee==', modeling)
+  if (!is(element, "bpmn:UserTask")) {
+    return undefined;
+  }
+  // console.log('element===', element)
+  modeling?.updateProperties(element, { assignee: value });
 }
 
 ////////////////  helpers
