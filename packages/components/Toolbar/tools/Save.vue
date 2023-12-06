@@ -67,6 +67,9 @@ export default {
       }
     },
     handleSave(type) {
+      const lintModule = this.getModeler.get("linting");
+      if (!Object.keys(lintModule?._issues || {})?.length) return this.$message.warning("流程不完整！");
+      console.log("modeler====", lintModule, lintModule.toggle());
       this.downloadProcess(type);
     }
   }

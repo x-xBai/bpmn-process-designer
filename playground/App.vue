@@ -19,6 +19,9 @@ import { mapGetters } from "vuex";
 import BpmnToolbar from "../packages/components/Toolbar";
 import BpmnContextMenu from "@packages/components/ContextMenu/ContextMenu";
 import BpmnPanel from "@packages/components/Panel";
+
+import { getModeler } from "@packages/bpmn-utils/BpmnDesignerUtils";
+
 export default {
   name: "App",
   //  BpmnSettings,
@@ -32,17 +35,32 @@ export default {
     ...mapGetters(["getEditorConfig"])
   },
   mounted() {
-    document.body.addEventListener("contextmenu", function (ev) {
-      ev.preventDefault();
-    });
-
     window.addEventListener(
       "message",
-      ({ data }) => {
-        this.xmlString = data.xmlString;
+      function ({ data }) {
+        console.log("子项目====", data);
+
+        if (data.type == "sendXml") {
+          getModeler() && getModeler().importXML(data.xmlString);
+        }
       },
       false
     );
+
+    this.init();
+    document.body.addEventListener("contextmenu", function (ev) {
+      ev.preventDefault();
+    });
+  },
+  methods: {
+    init() {}
   }
 };
 </script>
+
+<style lang="scss">
+a.bjs-powered-by {
+  // 去logo
+  display: none;
+}
+</style>
