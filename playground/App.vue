@@ -35,6 +35,14 @@ export default {
     document.body.addEventListener("contextmenu", function (ev) {
       ev.preventDefault();
     });
+
+    window.addEventListener(
+      "message",
+      ({ data }) => {
+        this.xmlString = data.xmlString;
+      },
+      false
+    );
   }
 };
 </script>
