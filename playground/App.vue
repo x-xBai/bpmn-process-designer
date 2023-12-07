@@ -42,6 +42,8 @@ export default {
 
         if (data.type == "sendXml") {
           getModeler() && getModeler().importXML(data.xmlString);
+
+          getModeler().get("canvas").zoom("fit-viewport", "auto");
         }
       },
       false

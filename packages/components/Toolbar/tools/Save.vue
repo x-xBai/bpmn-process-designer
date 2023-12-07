@@ -1,7 +1,9 @@
 <template>
   <div>
-    <el-button @click="handleSave(1)" type="primary"> 保存文件 </el-button>
-    <el-button @click="handleSave(2)" type="primary"> 部署文件 </el-button>
+    <el-button-group>
+      <el-button @click="handleSave(1)" type="primary"> 保存文件 </el-button>
+      <el-button @click="handleSave(2)" type="primary"> 部署文件 </el-button>
+    </el-button-group>
   </div>
 </template>
 
@@ -67,9 +69,9 @@ export default {
       }
     },
     handleSave(type) {
-      const lintModule = this.getModeler.get("linting");
-      if (!Object.keys(lintModule?._issues || {})?.length) return this.$message.warning("流程不完整！");
-      console.log("modeler====", lintModule, lintModule.toggle());
+      // const lintModule = this.getModeler.get("linting");
+      // if (!Object.keys(lintModule?._issues || {})?.length) return this.$message.warning("流程不完整！");
+      // console.log("modeler====", lintModule, lintModule.toggle());
       this.downloadProcess(type);
     }
   }

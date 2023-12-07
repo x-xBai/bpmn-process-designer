@@ -7,7 +7,7 @@
     </template>
 
     <edit-item label="ID">
-      <el-input v-model="elementId" maxlength="32" @change="updateElementId" />
+      <el-input disabled v-model="elementId" maxlength="32" @change="updateElementId" />
     </edit-item>
 
     <edit-item label="Name">
@@ -21,13 +21,13 @@
     </template>
 
     <template v-if="isProcess">
-      <edit-item key="version" label="Version">
+      <!-- <edit-item key="version" label="Version">
         <el-input v-model="elementVersion" maxlength="20" @change="updateElementVersion" />
-      </edit-item>
+      </edit-item> -->
 
-      <edit-item key="executable" label="Executable">
+      <!-- <edit-item key="executable" label="Executable">
         <el-switch v-model="elementExecutable" @change="updateElementExecutable" />
-      </edit-item>
+      </edit-item> -->
     </template>
   </el-collapse-item>
 </template>

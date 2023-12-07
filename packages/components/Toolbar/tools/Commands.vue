@@ -12,12 +12,19 @@
       <lucide-icon name="Eraser" :size="16" />
       <el-popover ref="restart" placement="bottom" trigger="hover" popper-class="button-popover" content="擦除重做" />
     </el-button>
+    <el-button v-r-popover:asign class="el-button__no-padding" @click="handleAlign">
+      <lucide-icon name="Aim" :size="16" />
+      <i class="el-icon-aim"></i>
+      <el-popover ref="asign" placement="bottom" trigger="hover" popper-class="button-popover" content="视图居中" />
+    </el-button>
   </el-button-group>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import { createNewDiagram } from "@utils/xml";
+
+import { getModeler } from "@packages/bpmn-utils/BpmnDesignerUtils";
 
 export default {
   name: "BpmnCommands",
@@ -40,6 +47,9 @@ export default {
       const command = this.getCommand();
       command && command.clear();
       this.getModeler && createNewDiagram(this.getModeler);
+    },
+    handleAlign() {
+      getModeler().get("canvas").zoom("fit-viewport", "auto");
     }
   }
 };

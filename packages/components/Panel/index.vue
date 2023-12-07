@@ -5,7 +5,7 @@
       <p>{{ bpmnElementName }}</p>
       <p>{{ customTranslate(currentElementType || "Process") }}</p>
     </div>
-    <el-collapse>
+    <el-collapse v-model="activeNames">
       <component v-for="cp in this.renderComponents" :key="cp.name" :is="cp" />
     </el-collapse>
   </div>
@@ -57,7 +57,8 @@ export default {
       currentElementType: undefined,
       currentElementId: undefined,
       customTranslate,
-      renderComponents: []
+      renderComponents: [],
+      activeNames: "base-info"
     };
   },
   created() {
