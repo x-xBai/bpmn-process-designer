@@ -18,6 +18,10 @@
       <edit-item label="assignee">
         <el-input v-model="elementAssignee" maxlength="20" @change="updateElementAssignee" />
       </edit-item>
+
+      <!-- <edit-item label="说明">
+        <el-input v-model="elementDoc" type="textarea" @change="updateElementDoc" />
+      </edit-item> -->
     </template>
 
     <template v-if="isProcess">
@@ -45,6 +49,8 @@ import { setIdValue } from "@packages/bo-utils/idUtil";
 import EventEmitter from "@utils/EventEmitter";
 import { getActive } from "@packages/bpmn-utils/BpmnDesignerUtils";
 
+import { getDocumentValue, setDocumentValue } from "@packages/bo-utils/documentationUtil";
+
 export default {
   name: "ElementGenerations",
   data() {
@@ -55,7 +61,8 @@ export default {
       elementExecutable: true,
       isProcess: false,
       isUserTask: false,
-      elementAssignee: ""
+      elementAssignee: "",
+      elementDoc: ""
     };
   },
 
@@ -70,6 +77,10 @@ export default {
       this.isUserTask = !!getActive() && getActive().type === "bpmn:UserTask";
       // 获取 assignee
       this.elementAssignee = getAssigneeValue(getActive()) || "";
+
+      // 说明
+      this.elementDoc = getDocumentValue(getActive()) || "";
+
       console.log("getActive()===", getActive());
       this.elementId = getActive().id;
       this.elementName = getNameValue(getActive()) || "";
@@ -98,6 +109,9 @@ export default {
     },
     updateElementExecutable(value) {
       setProcessExecutable(getActive(), value);
+    },
+    updateElementDoc(value) {
+      setDocumentValue(getActive(), value);
     }
   }
 };

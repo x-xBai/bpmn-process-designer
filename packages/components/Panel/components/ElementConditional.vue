@@ -15,11 +15,10 @@
         </edit-item>
       </template>
       <edit-item key="condition" label="条件类型" :label-width="120">
-        <el-select
-          v-model="conditionData.conditionType"
-          :options="conditionTypeOptions"
-          @change="setElementConditionType"
-        />
+        <el-select v-model="conditionData.conditionType" @change="setElementConditionType">
+          <el-option v-for="item in conditionTypeOptions" :key="item.value" :label="item.label" :value="item.value">
+          </el-option>
+        </el-select>
       </edit-item>
       <edit-item
         v-if="conditionData.conditionType && conditionData.conditionType === 'expression'"
@@ -69,7 +68,10 @@ export default {
       variableName: "",
       variableEvents: {},
       conditionTypeOptions: [],
-      conditionData: {},
+      conditionData: {
+        conditionType: null,
+        expression: ""
+      },
       scriptTypeOptions: scriptTypeOptions
     };
   },
@@ -77,9 +79,10 @@ export default {
   mounted() {
     this.getElementVariables();
     this.getElementConditionType();
+
     this.conditionTypeOptions = CU.getConditionTypeOptions(getActive());
     EventEmitter.on("element-update", () => {
-      this.conditionTypeOptions = CU.getConditionTypeOptions(getActive());
+      // this.conditionTypeOptions = CU.getConditionTypeOptions(getActive());
       this.getElementVariables();
       this.getElementConditionType();
     });
@@ -95,6 +98,8 @@ export default {
     },
     getElementConditionType() {
       this.conditionData.conditionType = CU.getConditionTypeValue(getActive());
+
+      console.log("conditionType===", this.conditionData.conditionType);
       this.conditionData.conditionType === "expression" && this.getConditionExpression();
       this.conditionData.conditionType === "script" && this.getConditionScript();
     },
@@ -131,6 +136,14 @@ export default {
     },
     setConditionScriptResource(value) {
       CU.setConditionScriptResourceValue(getActive(), value);
+    }
+  },
+  watch: {
+    conditionTypeOptions: {
+      handler(val) {
+        console.log("conditionTypeOptions---", val);
+      },
+      deep: true
     }
   }
 };

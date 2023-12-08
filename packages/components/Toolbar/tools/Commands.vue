@@ -15,7 +15,7 @@
     <el-button v-r-popover:asign class="el-button__no-padding" @click="handleAlign">
       <lucide-icon name="Aim" :size="16" />
       <i class="el-icon-aim"></i>
-      <el-popover ref="asign" placement="bottom" trigger="hover" popper-class="button-popover" content="视图居中" />
+      <el-popover ref="asign" placement="bottom" trigger="hover" popper-class="button-popover" content="重置视图居中" />
     </el-button>
   </el-button-group>
 </template>

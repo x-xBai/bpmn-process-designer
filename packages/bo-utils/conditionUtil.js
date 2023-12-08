@@ -6,10 +6,13 @@ import { getModeler, getProcessEngine } from "@packages/bpmn-utils/BpmnDesignerU
 ///////////////////////////////// 配置项可见性
 const CONDITIONAL_SOURCES = ["bpmn:Activity", "bpmn:ExclusiveGateway", "bpmn:InclusiveGateway", "bpmn:ComplexGateway"];
 const defaultConditionTypeOptions = [
-  { label: "无条件( None )", value: "none" },
-  { label: "默认路径( Default )", value: "default" },
-  { label: "条件表达式( Expression )", value: "expression" },
-  { label: "条件脚本( Script )", value: "script" }
+  { label: "无条件", value: "none" },
+  { label: "默认路径", value: "default" },
+  { label: "条件表达式", value: "expression" }
+  // { label: "无条件( None )", value: "none" },
+  // { label: "默认路径( Default )", value: "default" },
+  // { label: "条件表达式( Expression )", value: "expression" },
+  // { label: "条件脚本( Script )", value: "script" }
 ];
 // 父节点符合条件的连线
 export function isConditionalSource(element) {
