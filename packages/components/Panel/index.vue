@@ -118,7 +118,7 @@ export default {
       // 重设
       this.renderComponents.push(ElementGenerations);
       // 附加文档
-      // this.renderComponents.push(ElementDocumentations);
+      this.renderComponents.push(ElementDocumentations);
 
       // 条件
       isCanbeConditional(element) && this.renderComponents.push(ElementConditional);

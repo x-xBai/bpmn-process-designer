@@ -7,7 +7,7 @@ import { getModeler, getProcessEngine } from "@packages/bpmn-utils/BpmnDesignerU
 const CONDITIONAL_SOURCES = ["bpmn:Activity", "bpmn:ExclusiveGateway", "bpmn:InclusiveGateway", "bpmn:ComplexGateway"];
 const defaultConditionTypeOptions = [
   { label: "无条件", value: "none" },
-  { label: "默认路径", value: "default" },
+  // { label: "默认路径", value: "default" },
   { label: "条件表达式", value: "expression" }
   // { label: "无条件( None )", value: "none" },
   // { label: "默认路径( Default )", value: "default" },

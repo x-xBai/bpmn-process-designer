@@ -27,6 +27,8 @@
         :label-width="120"
       >
         <el-input v-model="conditionData.expression" @change="setConditionExpression" />
+
+        <div>例如：${judge == true}</div>
       </edit-item>
       <template v-if="conditionData.conditionType && conditionData.conditionType === 'script'">
         <edit-item key="scriptType" label="脚本类型" :label-width="120">
